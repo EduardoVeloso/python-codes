@@ -1,0 +1,25 @@
+from random import randint
+
+def sort(vet):
+  less,equal,greater = [],[],[]
+  if len(vet) > 1:
+    pivot = vet[0]
+    for x in vet:
+      if x < pivot:
+        less.append(x)
+      if x == pivot:
+        equal.append(x)
+      if x > pivot:
+        greater.append(x)
+    return sort(less) + equal + sort(greater)
+  else:
+    return vet
+    
+list = []
+for i in range(10):
+  list.append(randint(-9,9))
+print(list)
+list_sorted = sort(list)
+print(list_sorted)
+      
+        
