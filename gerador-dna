@@ -1,0 +1,55 @@
+import random
+#item a
+tam1 = int(input("Comprimento do DNA do ser vivo: "))
+
+#item b
+DNA_vivo = []
+valores = ['A','C','T','G']
+for i in range(tam1):
+    DNA_vivo.append(random.choice(valores))
+printDNA1 = ",".join(DNA_vivo)
+
+#item c
+print("DNA do ser vivo gerado aleatoriamente:" + printDNA1.replace(',',''))
+
+#item d
+tam2 = int(input("Comprimento do DNA da doenca: "))
+
+#item e
+DNA_doenca = []
+for i in range(tam2):
+    DNA_doenca.append(random.choice(valores))
+printDNA2 = ",".join(DNA_doenca)
+
+#item f
+print("DNA da doenca gerado aleatoriamente: " + printDNA2.replace(',',''))
+
+#item g
+i = cont = 0
+while i <= tam1 - tam2:
+    if DNA_doenca[0 : tam2] == DNA_vivo[i : i + tam2]:
+        cont = cont + 1
+    i = i + 1
+print("Contagem das ocorrencias direta da doenca no ser vivo: {}".format(cont))
+
+#item h
+inverter = DNA_vivo[::-1]
+for i in range(tam1):
+    if inverter[i] == 'A':
+        inverter[i] = 'C'
+    elif inverter[i] == 'C':
+        inverter[i] = 'A'
+    elif inverter[i] == 'T':
+        inverter[i] = 'G'
+    else:
+        inverter[i] = 'T'
+#item i
+print("DNA do ser vivo, complementar invertido: " + ",".join(inverter).replace(',',''))
+
+#item j
+j = c = 0
+while j <= tam1 - tam2:
+    if DNA_doenca[0 : tam2] == inverter[j : j + tam2]:
+        c += 1
+    j = j + 1
+print("Contagem das ocorrencias  da doenca no DNA complementar invertido: {}".format(c))
