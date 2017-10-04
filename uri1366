@@ -1,0 +1,15 @@
+while True:
+    n = int(input()) #receber o valor dos diferentes comprimentos das varetas
+    if n == 0:
+        break
+    total = 0
+    while n > 0:
+        valores = input().split()
+        ci = int(valores[0]) #receber o comprimento das varetas
+        vi = int(valores[1]) #receber numero de varetas
+        if vi % 2 !=0:
+            total = total + (vi - 1)
+        else:
+            total = total + vi
+        n = n - 1
+    print(total // 4)
