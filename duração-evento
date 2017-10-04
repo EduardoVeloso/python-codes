@@ -1,0 +1,26 @@
+tempo = input().split()
+hi = int(tempo[0])
+mi = int(tempo[1])
+hf = int(tempo[2])
+mf = int(tempo[3])
+
+horai = hi * 60 + mi
+horaf = hf * 60 + mf
+
+if horaf > horai:
+    htotal = horaf - horai
+    min = htotal % 60
+    hora = htotal // 60
+
+    if htotal == 0:
+        print("O JOGO DUROU 24 HORA(S) E 0 MINUTO(S)")
+    else:
+        if hora == 0:
+            print("O JOGO DUROU %d HORA(S) E %d MINUTO(S)"%(hora,min))
+        else:
+            print("O JOGO DUROU %d HORA(S) E %d MINUTO(S)"%(hora,min))
+else:
+    htotal = 1440 - (horai - horaf)
+    min = htotal % 60
+    hora = htotal // 60
+    print("O JOGO DUROU %d HORA(S) E %d MINUTO(S)"%(hora, min))
