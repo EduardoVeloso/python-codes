@@ -1,0 +1,38 @@
+#funcao para armazenar dados na lista
+def armazena(n):
+    valores = []
+    for i in range(n):
+        valores.append(int(input()))
+    return valores
+
+#funcao que calcula a media imprimindo o menor e maior
+def calculo(vet,n,m,cont):
+    i = 0
+    media = []
+    while i <= (n - m):
+        media.append((sum(vet[i : i + m])) / m)
+        i = i + 1
+    maior = max(media) #maior valor
+    menor = min(media) #menor valor
+    print("Cidade {}".format(cont))
+    print("{:.2f} {:.2f}".format(menor,maior))
+    print()
+
+
+#Programa_Pincipal
+cont = 0
+while True:
+    lista = input().split()
+    N = int(lista[0])
+    M = int(lista[1])
+    if N == 0 and M == 0:
+        break
+    elif 1<= N <= 1000 :
+        if  1 <= M <= N:
+            cont = cont + 1
+            dados = armazena(N)
+            calculo(dados,N,M,cont)
+        else:
+            print("Valor invalido para o tamanho dos intervalos, em dias!!!".upper())
+    else:
+        print("Valor invalido para numero total de medicoes diarias!!!".upper())
