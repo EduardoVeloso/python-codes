@@ -1,0 +1,34 @@
+#Funcao para ler nomes
+def fun_nomes(n):
+    nomes = []
+    for i in range(n):
+        nomes.append(input("Digite o nome da crianca {}: ".format(i + 1)))
+    return nomes
+
+#Funcao para determinar o vencedor
+def jogadas(p,n,cont):
+    j = 1
+    print("Sequencia {}".format(cont))
+    while j <= p:
+        soma = 0
+        dedos = input().split()
+        for i in range(n):
+            soma =  int(dedos[i]) + soma
+        print(nomes[soma % n])
+        j = j + 1
+    print()
+
+#Prog_Principal
+cont = 0
+while True:
+    dados = input().split()
+    n = int(dados[0])  #ler numero de criancas
+    p = int(dados[1])  #ler numero de partidas
+    if n == 0 and p == 0:
+        break
+    elif 2 <= n <= 100 and 1 <= p <= 1000:
+        nomes = fun_nomes(n)
+        cont = cont + 1
+        jogadas(p,n,cont)
+    else:
+        print("Valor invalido, digite novamente!!!".upper())
