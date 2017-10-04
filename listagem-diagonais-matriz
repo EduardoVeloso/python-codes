@@ -1,0 +1,39 @@
+import random #pacote para gerar valores aleatorios para a matriz
+              #nao esta sendo utilizando para manipular a matriz
+
+def criar_matriz(linhas, colunas):
+    lista = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    matriz = []
+    for i in range(linhas):
+        linha = []
+        for j in range(colunas):
+            linha.append(random.choice(lista))
+        matriz.append(linha)
+    return matriz
+
+
+def diagonal(m,linha,coluna):
+    diag1, diag2 = [] , []
+    for ind in range(coluna + linha - 1): #a quantidade de diagonais, para qlq matriz, é linha + coluna -1
+        diag1.append([])
+        diag2.append([])
+
+    for i in range(linha):
+        for j in range(coluna):
+            diag1[i + j].append(m[i][j])
+            diag2[- (-linha + 1) + j - i].append(m[i][j])
+
+    for i in range(len(diag1)):
+        print((str(diag1[i][:])).replace(',','').strip('[]') )
+    for i in range(len(diag2)):
+        print((str(diag2[i][:])).replace(',','').strip('[]') )
+
+linha = int(input("Digite a quantidade de linhas: "))
+coluna = int(input("Digite a quantidade de colunas: "))
+mat = criar_matriz(linha,coluna)
+print("Matriz Gerada Aleatoriamente:")
+for i in range(linha):
+    print(str((mat[i][:])).replace(',','').strip('[]'))
+
+print("Lista das Diagonais:")
+diagonal(mat,linha,coluna)
