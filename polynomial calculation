@@ -1,0 +1,62 @@
+def polinomio():
+    pol = []
+    lista = input().split()
+    for i in range(len(lista)):
+        pol.append(float(lista[i]))
+    return pol
+
+def soma_polinomio(pol1, pol2):
+    valor = []
+    if len(pol1) > len(pol2):
+        diff = len(pol1) - len(pol2)
+        for j in range(diff):
+            valor.append(pol1[j])
+        for i in range(len(pol2)):
+            valor.append(pol1[diff + i] + pol2[i])
+
+    if len(pol1) < len(pol2):
+        diff = len(pol2) - len(pol1)
+        for j in range(diff):
+            valor.append(pol2[j])
+        for i in range(len(pol1)):
+            valor.append(pol2[diff + i] + pol1[i])
+
+    if len(pol1) == len(pol2):
+        for i in range(len(pol1)):
+            valor.append(pol1[i] + pol2[i])
+    return valor
+
+def multiplica_polinomio(pol1, pol2):
+    grau = []
+    mult = []
+    resultado = []
+    polx = pol1[::-1]
+    poly = pol2[::-1]
+    for i in range(len(pol1)):
+        for j in range(len(pol2)):
+            mult.append(float(polx[i] * poly[j]))
+            grau.append(int(i + j))
+    ind = 0
+    while ind < len(mult):
+         if grau[ind] != grau[ind + 1]:
+             resultado.append(float(mult[ind]))
+             ind += 1
+         else:
+            resultado.append(float(mult[ind] + mult[ind + 1]))
+            ind += 2
+            if ind >= len(mult) - 1:
+                ind -= 1
+                resultado.append(float(mult[ind]))
+                break
+    return resultado[::-1]
+
+print("Digite os coeficientes do polinomio 1")
+polx = polinomio()
+print("Digite os coeficientes do polinomio 2")
+poly = polinomio()
+soma = soma_polinomio(polx,poly)
+mult = multiplica_polinomio(polx,poly)
+print("Coeficientes do Polinômio Soma: " + str(soma).replace(',','').strip('[]'))
+print("Coeficientes do Polinômio Multiplicação: " + str(mult).replace(',','').strip('[]'))
+
+
