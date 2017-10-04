@@ -1,0 +1,38 @@
+#funcao para converter as bases
+def converter(n, base, vet):
+    if n >= base:
+        if n // base != 0:
+            vet.append(n % base)
+            novo = n // base
+            converter(novo, base, vet)
+    else:
+        vet.append(n)
+    letra = "ABCDEF"
+    if base > 10:
+        if base > 10:
+            for i in range(len(vet)):
+                if vet[i] == 10:
+                    vet[i] = str(letra[0])
+                elif vet[i] == 11:
+                    vet[i] = str(letra[1])
+                elif vet[i] == 12:
+                    vet[i] = str(letra[2])
+                elif vet[i] == 13:
+                    vet[i] = str(letra[3])
+                elif vet[i] == 14:
+                    vet[i] = str(letra[4])
+                elif vet[i] == 15:
+                    vet[i] = str(letra[5])
+    return ((str(vet[::-1])).replace(',','')).strip('[]')
+
+
+
+#programa principal
+while True:
+    n = int(input("Digite um valor inteiro nao negativo (negativo para sair): "))
+    if n < 0:
+        break
+    for base in range(2, 17): #percorrer da base 2, inclusive, ate base 16, inclusive
+        vet = []
+        print ("Base {}: ".format(base) + converter(n, base, vet).strip('\''))
+
