@@ -1,0 +1,28 @@
+try:
+    nome = input("Digite o nome do arquivo que deseja criar: ")
+    arq = open(nome, "r")
+    vet = []
+    for ind in arq:
+        vet.append(ind.strip('\n'))
+    arq.close()
+
+    if len(vet) == 0:
+        print("O arquivo está vazio")
+    else:
+        mini = min(vet)
+        maxi = max(vet)
+
+        for i in range(len(vet)):
+            if len(vet[i]) >= len(maxi):
+                maxi = vet[i]
+            if len(vet[i]) <= len(mini):
+                mini = vet[i]
+        print()
+        print(mini)
+        print(maxi)
+        print(str(vet.index(mini) + 1) + " " + str(vet.index(maxi) + 1))
+
+except FileNotFoundError:
+    print("O arquivo não existe")
+
+
