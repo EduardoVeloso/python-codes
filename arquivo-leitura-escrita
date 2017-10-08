@@ -1,0 +1,40 @@
+def escreve(nome,vet):
+    escrita = open(nome, "w")
+    for linha in range(len(vet)):
+        escrita.write(str(vet[linha]) + "\n")
+    escrita.close()
+    return None
+
+def leitura(nome):
+    arq = open(nome, "r")
+    for ind in arq:
+        print(ind.strip())
+    arq.close()
+    return None
+
+try:
+    nome = input("Digite o nome do arquivo: ")
+    arq = open(nome, "r")
+    linhas = input().split()
+    linha1,linha2 = int(linhas[0]),int(linhas[1])
+    vet = []
+
+    for ind in arq:
+        print(ind.strip())
+        vet.append(ind.strip('\n'))
+    arq.close()
+
+    if len(vet) == 0:
+        print("O arquivo esta vazio!!!")
+
+    else:
+        if len(vet) == 1:
+            print("Nao eh possivel trocar de linha!!!")
+        else:
+            vet[linha1 - 1],vet[linha2 - 1] = vet[linha2 - 1],vet[linha1 - 1]
+            escreve(nome,vet)
+            print()
+            leitura(nome)
+
+except FileNotFoundError:
+    print("O arquivo não existe!!!")
