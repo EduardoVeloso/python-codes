@@ -1,0 +1,41 @@
+def escreve(nome,vet):
+    arq = open(nome, "w")
+    for ind in range(len(vet)):
+        arq.write(str(vet[ind]) + "\n")
+    arq.close()
+    return None
+
+def leitura(nome):
+    arq = open(nome, "r")
+    vet = []
+    for i in arq:
+        vet.append(i.strip("\n"))
+    if len(vet) == 0:
+        print("Arquivo esta vazio")
+    else:
+        for ind in range(len(vet)):
+            print(vet[ind])
+        arq.close()
+    return vet
+
+nome = input("Digite o nome do arquivo: ")
+num = float(input("Digite o valor 1: "))
+i = 2
+arq = open(nome, "w")
+while num != - 1:
+    if num > 0:
+        arq.write(str(num) + "\n")
+    num = float(input("Digite o valor {}: ".format(i)))
+    i += 1
+arq.close()
+vet = leitura(nome)
+soma = 0
+mini = min(vet)
+maxi = max(vet)
+for i in range(len(vet)):
+    soma = soma + float(vet[i])
+
+print(str(soma) + "   " + str(maxi) + "   " + str(mini))
+vet.remove(min(vet))
+vet.remove(max(vet))
+escreve(nome,vet)
