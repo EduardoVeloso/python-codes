@@ -1,0 +1,20 @@
+def leitura(nome):
+    arq = open(nome,"r")
+    vet = []
+    for ind in arq:
+        vet.append(ind.strip())
+    arq.close()
+    return vet
+
+nome1 = input("Insira o nome do primeiro arquivo: ")
+nome2 = input("Insira o nome do segundo arquivo: ")
+vet1 = leitura(nome1)
+vet2 = leitura(nome2)
+final = input("Insira o nome do arquivo final: ")
+arq = open(final, "w")
+vetfinal = vet1 + vet2
+vetfinal.sort()
+for i in range(len(vetfinal)):
+    arq.write(str(vetfinal[i]) + "\n")
+arq.close()
+
