@@ -12,7 +12,7 @@ class Lutador(object):
 	def __str__(self): 
 		return self.nome 
 
-	def porrada(self, other):
+	def atacar(self, other):
 		dano = random.randint(0, 12) #variação do dano
 		other.hp -= dano 
 		return dano 	
@@ -31,7 +31,7 @@ class Luta(object):
 			for x in lista: 
 				if x != a: 
 					b = x 
-					bn = a.porrada(b) 
+					bn = a.atacar(b) 
 					if bn == 0:
 						print("\n{} porrou {} e causou {} de dano, soco de moça!!".format(a, b, bn))
 						time.sleep(1)
