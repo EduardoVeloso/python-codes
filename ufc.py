@@ -33,10 +33,10 @@ class Luta(object):
 					b = x 
 					bn = a.atacar(b) 
 					if bn == 0:
-						print("\n{} porrou {} e causou {} de dano, soco de moça!!".format(a, b, bn))
+						print("\n{} atacou {} e causou {} de dano, soco de moça!!".format(a, b, bn))
 						time.sleep(1)
 					else:
-						print("\n{} porrou {} e causou {} de dano".format(a, b, bn)) 
+						print("\n{} atacou {} e causou {} de dano".format(a, b, bn)) 
 						time.sleep(1)
 					if self.desafiado.hp == 0 or self.desafiante.hp == 0:
 						break 
